@@ -2,12 +2,12 @@
 #include <cstdlib>
 #include <string>
 #include <fstream>
-#include<iomanip>
+#include <iomanip>
+#include <vector>
 
 using namespace std;
 
 int main() {
-
 
 	ifstream fin;
 	ofstream fout;
@@ -19,6 +19,32 @@ int main() {
 	//fin.open("Test_File/Test_file_1.txt");
 	//fin.open("Test_File/Test_file_1.txt");
 
+	/*
+		This struct identifies the process
+		 PID: Process ID,
+		 AT: Arrival Time,
+		 CPUB: CPU Burst,
+		 size: Size in Bytes,
+		 ST: Starting Time,
+		 FT: Finishing Time,
+		 WT: Waiting Time,
+		 TA: Turn Around
+
+	*/
+	struct Process
+	{
+		int PID;
+		int AT;
+		int CPUB;
+		int Size;
+		int ST;
+		int FT;
+		int WT;
+		int TA;
+
+	};
+
+	vector <Process> PCB(5);
 
 	/*
 		Reading file content from the input files
@@ -36,9 +62,14 @@ int main() {
 	int PI[5][4];
 
 	fin >> mSize >> pSize >> Q >> CS;
-	for (int i = 0; i < 5; i++)
-		for (int j = 0; j < 4; j++)
-			fin >> PI[i][j];
+	for (int i = 0; i < 5; i++) {
+
+		fin >> PCB[i].PID;
+		fin >> PCB[i].AT;
+		fin >> PCB[i].CPUB;
+		fin >> PCB[i].Size;
+
+	}
 
 
 
